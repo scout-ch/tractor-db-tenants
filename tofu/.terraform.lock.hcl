@@ -28,6 +28,7 @@ provider "registry.opentofu.org/hashicorp/random" {
   version     = "3.7.2"
   constraints = "3.7.2"
   hashes = [
+    "h1:cFGCdxTlsrteTiaOV/iOQdql7eJkD3F/vtJxenkj9IE=",
     "h1:rdpkD+Rzr+KCPqOvb1ckzupjWCOum/boRX4FqVboAHQ=",
     "zh:2ffeb1058bd7b21a9e15a5301abb863053a2d42dffa3f6cf654a1667e10f4727",
     "zh:519319ed8f4312ed76519652ad6cd9f98bc75cf4ec7990a5684c072cf5dd0a5d",
@@ -47,6 +48,7 @@ provider "registry.opentofu.org/maxlaverse/bitwarden" {
   constraints = "0.16.0"
   hashes = [
     "h1:QUeRezyVevG6UCFQGhlJ+GZx0MRq/9iW0q0cxZJ0HnM=",
+    "h1:TX44EiGO0YkE1esHPOh6lzXnVzivcoNuyCFaXRj7GFs=",
     "zh:49b383ae6edda2b6e0f321b6e7be8866ed26e31bfca6c7dbdf93f97600e25a9d",
     "zh:5e78bae93e270eefedae0109bb049a70e971adc0f7a46fee06249f50419ea4c6",
     "zh:65b492c19462222145ae9b06ae55dadf90247611045223e2ccfe621ca985eb07",
