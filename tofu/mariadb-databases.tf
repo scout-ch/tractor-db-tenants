@@ -3,10 +3,6 @@ module "db_tractor_uptime" {
 
   name = "tractor_uptime"
   grants = {
-    "tractor_uptime" = {
-      user = module.u_tractor_uptime.user_name
-      host = module.u_tractor_uptime.user_host
-    }
+    "tractor_uptime" = module.u_tractor_uptime
   }
 }
-

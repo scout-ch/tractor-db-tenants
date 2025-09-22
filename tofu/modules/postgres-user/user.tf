@@ -1,8 +1,8 @@
 resource "postgresql_role" "this" {
-  name            = var.name
   create_database = true
   login           = true
-  password        = var.password
+  name            = nonsensitive(local.bitwarden_item.username)
+  password        = local.bitwarden_item.password
 }
 
 resource "postgresql_grant_role" "webadmin" {

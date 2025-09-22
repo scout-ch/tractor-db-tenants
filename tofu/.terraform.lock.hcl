@@ -24,6 +24,47 @@ provider "registry.opentofu.org/cyrilgdn/postgresql" {
   ]
 }
 
+provider "registry.opentofu.org/hashicorp/random" {
+  version     = "3.7.2"
+  constraints = "3.7.2"
+  hashes = [
+    "h1:rdpkD+Rzr+KCPqOvb1ckzupjWCOum/boRX4FqVboAHQ=",
+    "zh:2ffeb1058bd7b21a9e15a5301abb863053a2d42dffa3f6cf654a1667e10f4727",
+    "zh:519319ed8f4312ed76519652ad6cd9f98bc75cf4ec7990a5684c072cf5dd0a5d",
+    "zh:7371c2cc28c94deb9dba62fbac2685f7dde47f93019273a758dd5a2794f72919",
+    "zh:9b0ac4c1d8e36a86b59ced94fa517ae9b015b1d044b3455465cc6f0eab70915d",
+    "zh:c6336d7196f1318e1cbb120b3de8426ce43d4cacd2c75f45dba2dbdba666ce00",
+    "zh:c71f18b0cb5d55a103ea81e346fb56db15b144459123f1be1b0209cffc1deb4e",
+    "zh:d2dc49a6cac2d156e91b0506d6d756809e36bf390844a187f305094336d3e8d8",
+    "zh:d5b5fc881ccc41b268f952dae303501d6ec9f9d24ee11fe2fa56eed7478e15d0",
+    "zh:db9723eaca26d58c930e13fde221d93501529a5cd036b1f167ef8cff6f1a03cc",
+    "zh:fe3359f733f3ab518c6f85f3a9cd89322a7143463263f30321de0973a52d4ad8",
+  ]
+}
+
+provider "registry.opentofu.org/maxlaverse/bitwarden" {
+  version     = "0.16.0"
+  constraints = "0.16.0"
+  hashes = [
+    "h1:QUeRezyVevG6UCFQGhlJ+GZx0MRq/9iW0q0cxZJ0HnM=",
+    "zh:49b383ae6edda2b6e0f321b6e7be8866ed26e31bfca6c7dbdf93f97600e25a9d",
+    "zh:5e78bae93e270eefedae0109bb049a70e971adc0f7a46fee06249f50419ea4c6",
+    "zh:65b492c19462222145ae9b06ae55dadf90247611045223e2ccfe621ca985eb07",
+    "zh:682b22c9b4008753b81a043db3774064557535a205204617c1c84e98a17b293d",
+    "zh:7684bb0b5e99edcf287e204ad9ea40484c9886111dc02506176c34e5b4ab7e38",
+    "zh:7c0d61fd1b9d27034c1ced73beddfa315baf0fa9c7c276ead20a78b1968e4063",
+    "zh:84a295364ab0e43df5b5b5cdef68bf9ad2fad890f6b3a6de3242cb242acf5d12",
+    "zh:aa1f7ff46e2c09b7b3f26fc1d52fbca0e839efedcca32fb24ee0fc17d3d20f68",
+    "zh:b137589f376dac262cf55d1451d9dc5e94e8e25e5046e4a27c574a369d9f275e",
+    "zh:b21214a883e2838f5e6377f0cad79d676c7839e9ee7a71a9d7f311e481822a09",
+    "zh:d690a0bc9781a05698aaff5056197963fd5c1f7b71c0c53539e5ff3073cdb8d9",
+    "zh:d780053bff8d65fa3b177c02122bba30b716970d6c8b6312b7fb5988d512fee2",
+    "zh:e034b2e7f6fba2489d02a57e763b83fd24a772358b6e7f63a4b5b0a43f0d4c30",
+    "zh:efd27fe06e643dfcfd2721312dbe8b1b6132e0aa6379f3e62d3e56d54c090aa8",
+    "zh:f809ab383cca0a5f83072981c64208cbd7fa67e986a86ee02dd2c82333221e32",
+  ]
+}
+
 provider "registry.opentofu.org/petoju/mysql" {
   version     = "3.0.84"
   constraints = "3.0.84"
