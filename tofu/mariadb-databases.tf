@@ -1,11 +1,12 @@
-module "db_cosinus_ragflow" {
+module "db_tractor_uptime" {
   source = "./modules/mariadb-database"
 
-  name = "cosinus-ragflow"
+  name = "tractor_uptime"
   grants = {
-    "cosinus-ragflow" = {
-      user = module.u_cosinus_ragflow.user_name
-      host = module.u_cosinus_ragflow.user_host
+    "tractor_uptime" = {
+      user = module.u_tractor_uptime.user_name
+      host = module.u_tractor_uptime.user_host
     }
   }
 }
+

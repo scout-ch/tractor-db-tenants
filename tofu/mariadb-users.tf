@@ -1,6 +1,6 @@
-module "u_cosinus_ragflow" {
+module "u_tractor_uptime" {
   source = "./modules/mariadb-user"
 
-  name          = "cosinus-ragflow"
-  password_hash = var.mariadb_user_cosinus_ragflow_password
+  name          = "tractor_uptime"
+  password_hash = var.mariadb_user_tractor_uptime_password
 }
