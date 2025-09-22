@@ -2,13 +2,16 @@
 
 ## Prerequisites
 
-- OpenTofu installed
+- OpenTofu installed: https://opentofu.org/docs/intro/install/
+- Bitwarden CLI Installed: https://bitwarden.com/help/cli/
 - DB Servers up and running
+- Recommended: [OpenTofu Plugin Caching](https://opentofu.org/docs/cli/config/config-file/#provider-plugin-cache) set up 
 
 ## Initial Setup
 
-1. Create a new db user and database for Tractor on the shared postgres db.
-2. Copy the db password to the `.env` file.
+1. Copy `.env.example` to `.env`
+2. Look up the `tractor-db-tenants-tf` db password in bitwarden and add it to `.env`
+3. Create a Bitwarden API Key (https://bitwarden.com/help/personal-api-key/) and set all the values (incl. you personal Vault Password) in the `.env` file
 
 ```bash
 source .env
@@ -16,18 +19,3 @@ cd tofu
 tofu init
 tofu apply
 ```
-
-## Creating a mariadb user
-
-To generate the password hash for a mariadb user, run the following SQL directly on the server:
-```SQL
-SELECT PASSWORD('<super-secret-password>');
-```
-
-Then create a file called `terraform.tfvars` inside the `tofu` folder and provide the password hash as follows:
-
-```tfvars
-mariadb_user_test_password = "<hash-from-sql-statement>"
-```
-
-And add a variable declaration `mariadb_user_test_password` to the `variables.tf` file.

@@ -4,8 +4,8 @@ variable "name" {
 
 variable "grants" {
   type = map(object({
-    user = string,
-    host = string
+    user_name = string,
+    user_host = string
   }))
   default = {}
 }

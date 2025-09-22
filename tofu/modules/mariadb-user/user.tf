@@ -1,6 +1,5 @@
 resource "mysql_user" "this" {
-  user               = var.name
+  user               = nonsensitive(local.bitwarden_item.username)
   host               = "%"
-  auth_plugin        = "mysql_native_password"
-  auth_string_hashed = var.password_hash
+  plaintext_password = local.bitwarden_item.password
 }

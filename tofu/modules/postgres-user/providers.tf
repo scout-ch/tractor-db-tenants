@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    mysql = {
-      source  = "petoju/mysql"
-      version = "3.0.84"
+    postgresql = {
+      source  = "cyrilgdn/postgresql"
+      version = "1.26.0"
     }
     random = {
       source  = "hashicorp/random"

@@ -7,5 +7,17 @@ terraform {
       source  = "petoju/mysql"
       version = "3.0.84"
     }
+    postgresql = {
+      source  = "cyrilgdn/postgresql"
+      version = "1.26.0"
+    }
+    bitwarden = {
+      source  = "maxlaverse/bitwarden"
+      version = "0.16.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "3.7.2"
+    }
   }
 }
