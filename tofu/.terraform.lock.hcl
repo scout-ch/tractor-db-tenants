@@ -6,6 +6,7 @@ provider "registry.opentofu.org/cyrilgdn/postgresql" {
   constraints = "1.26.0"
   hashes = [
     "h1:8bXFg6KkLzUAd44WUnqSxVY0pqXALT14h59OlYq3UTY=",
+    "h1:kId855uQr126ruzaPg2KA5EZ+j2fwASTZOK4QplxyBY=",
     "zh:0f2ec2bb24f8bb9eb232f1650d6459a2bac732bf91bbc08b27ae5519bee89486",
     "zh:11dafcec9c7e6e2c8b6303d90c6061973db26f6f84adc2be02fe66e9b1b11561",
     "zh:13a67dc639ee053cbecc6ab28fd5bfca4780e680bd12491f1bdf0f8243fd364a",
@@ -27,6 +28,7 @@ provider "registry.opentofu.org/petoju/mysql" {
   version     = "3.0.84"
   constraints = "3.0.84"
   hashes = [
+    "h1:4nWMd9TZMq0EpfpDel/ghcW2wFkCSlOFlc3so2E8ISY=",
     "h1:P9u2TsPa+4PwmbxnORAhuWAxokX8NPqak7QgYOguYjo=",
     "zh:01fcef3eb028fb3f67e9f58914e7def1f48b2275097115d15184f54a8c832abe",
     "zh:02f05f15a1f64c2358a544ad0498ce4317f90b10cc5b656ca5e6d7ca03262d08",

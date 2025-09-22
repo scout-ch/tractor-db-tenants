@@ -5,4 +5,12 @@ resource "postgresql_database" "this" {
   encoding               = "DEFAULT"
   lc_collate             = "DEFAULT"
   lc_ctype               = "DEFAULT"
+
+  lifecycle {
+    ignore_changes = [
+      encoding,
+      lc_collate,
+      lc_ctype,
+    ]
+  }
 }
