@@ -1,4 +1,4 @@
-# Tractor DB Tenants
+# Tractor DB Tenants
 
 ## Prerequisites
 
