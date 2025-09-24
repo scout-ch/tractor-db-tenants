@@ -3,7 +3,7 @@ on:
 
 jobs:
   lint:
-    name: "Check Pull Request"
+    name: "Lint"
     runs-on: ubuntu-latest
     defaults:
       run:
