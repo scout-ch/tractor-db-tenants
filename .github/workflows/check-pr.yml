@@ -159,6 +159,10 @@ jobs:
                 body: output
               })
             }
+
+            // 4. Write to step summary
+            const fs = require('fs');
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, output);
   apply:
     name: "Create Plan"
     runs-on: ubuntu-latest
