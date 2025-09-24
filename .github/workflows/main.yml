@@ -1,0 +1,60 @@
+on:
+  pull_request:
+
+name: Plan an Apply
+
+jobs:
+  plan:
+    name: "Create Plan"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tofu
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Plan
+        id: plan
+        env:
+          PGPASSWORD: ${{ secrets.PGPASSWORD }}
+          BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
+          BW_CLIENTSECRET: ${{ secrets.BW_CLIENTSECRET }}
+          BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
+        uses: ./.github/actions/common-setup
+
+      - name: Upload Plan Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tfplan
+          path: tofu/tfplan
+  apply:
+    name: "Apply Plan"
+    runs-on: ubuntu-latest
+    needs: plan
+    environment: db-shared
+    defaults:
+      run:
+        working-directory: tofu
+    env:
+        PGPASSWORD: ${{ secrets.PGPASSWORD }}
+        BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
+        BW_CLIENTSECRET: ${{ secrets.BW_CLIENTSECRET }}
+        BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
+    steps:
+      - name: Common Setup
+        uses: ./.github/actions/common-setup
+
+      - name: OpenTofu Init
+        id: init
+        run: tofu init
+
+      - name: Download Plan Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tfplan
+          path: tofu
+
+      - name: OpenTofu Apply
+        id: apply
+        run: tofu apply -auto-approve tfplan

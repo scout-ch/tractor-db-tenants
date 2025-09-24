@@ -15,14 +15,15 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-      - uses: opentofu/setup-opentofu@000eeb8522f0572907c393e8151076c205fdba1b # v1
+      - name: Common Setup
+        uses: ./.github/actions/common-setup
         with:
-          tofu_version: 1.10.6
+          download_bw: 'false'
+
       - name: OpenTofu Format
         id: fmt
         run: tofu fmt -check -recursive -diff
+
       - name: Update Pull Request
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         if: github.event_name == 'pull_request' && (success() || failure())
@@ -73,45 +74,15 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    env:
-        PGPASSWORD: ${{ secrets.PGPASSWORD }}
-        BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
-        BW_CLIENTSECRET: ${{ secrets.BW_CLIENTSECRET }}
-        BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-      - uses: opentofu/setup-opentofu@000eeb8522f0572907c393e8151076c205fdba1b # v1
-        with:
-          tofu_version: 1.10.6
-      - name: Download Bitwarden CLI ${{ env.BW_VERSION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BW_VERSION: 2025.9.0
-        run: |
-          URL="https://github.com/bitwarden/clients/releases/download/cli-v${BW_VERSION}/bw-linux-${BW_VERSION}.zip"
-
-          curl -L -H "Authorization: Bearer ${GITHUB_TOKEN}" -o bw.zip "$URL"
-          sudo unzip -o bw.zip -d /usr/local/bin
-          sudo chmod +x /usr/local/bin/bw
-          bw --version
-      - name: OpenTofu Init
-        id: init
-        run: tofu init
-
-      - name: OpenTofu Validate
-        id: validate
-        run: tofu validate -no-color
-
-      - name: OpenTofu Plan
+      - name: Plan
         id: plan
-        run: tofu plan -no-color -out=tfplan
-        continue-on-error: true
+        uses: ./.github/actions/common-setup
 
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
         env:
-          PLAN: "tofu\n${{ steps.plan.outputs.stdout }}"
+          PLAN: "tofu\n${{ steps.plan.outputs.plan }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -168,54 +139,3 @@ jobs:
             // 4. Write to step summary
             const fs = require('fs');
             fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, output);
-      - name: Upload Plan Artifact
-        uses: actions/upload-artifact@v4
-        #if: github.ref == 'refs/heads/main'
-        with:
-          name: tfplan
-          path: tofu/tfplan
-  apply:
-    name: "Apply Plan"
-    runs-on: ubuntu-latest
-    needs: plan
-    environment: db-shared
-    #if: github.ref == 'refs/heads/main'
-    defaults:
-      run:
-        working-directory: tofu
-    permissions:
-      contents: read
-      pull-requests: write
-    env:
-        PGPASSWORD: ${{ secrets.PGPASSWORD }}
-        BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
-        BW_CLIENTSECRET: ${{ secrets.BW_CLIENTSECRET }}
-        BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-      - uses: opentofu/setup-opentofu@000eeb8522f0572907c393e8151076c205fdba1b # v1
-        with:
-          tofu_version: 1.10.6
-      - name: Download Bitwarden CLI ${{ env.BW_VERSION }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BW_VERSION: 2025.9.0
-        run: |
-          URL="https://github.com/bitwarden/clients/releases/download/cli-v${BW_VERSION}/bw-linux-${BW_VERSION}.zip"
-
-          curl -L -H "Authorization: Bearer ${GITHUB_TOKEN}" -o bw.zip "$URL"
-          sudo unzip -o bw.zip -d /usr/local/bin
-          sudo chmod +x /usr/local/bin/bw
-          bw --version
-      - name: OpenTofu Init
-        id: init
-        run: tofu init
-      - name: Download Plan Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: tfplan
-          path: tofu
-      - name: OpenTofu Init
-        id: apply
-        run: tofu apply -auto-approve tfplan

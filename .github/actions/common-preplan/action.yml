@@ -1,0 +1,27 @@
+name: "OpenTofu Plan"
+description: "Run OpenTofu plan"
+outputs:
+  plan:
+    description: Stdout of tofu plan command
+    value: ${{ steps.plan.outputs.stdout }}
+runs:
+  using: "composite"
+  steps:
+    - name: Common Setup
+      uses: ./.github/actions/common-setup
+
+    - name: OpenTofu Init
+      shell: bash
+      id: init
+      run: tofu init
+
+    - name: OpenTofu Validate
+      shell: bash
+      id: validate
+      run: tofu validate -no-color
+
+    - name: OpenTofu Plan
+      shell: bash
+      id: plan
+      run: tofu plan -no-color -out=tfplan
+      continue-on-error: true
