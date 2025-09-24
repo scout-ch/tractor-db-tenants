@@ -115,12 +115,11 @@ jobs:
               issue_number: context.issue.number,
             })
             const botComment = comments.find(comment => {
-              return comment.user.type === 'Bot' && comment.body.includes('OpenTofu Format and Style')
+              return comment.user.type === 'Bot' && comment.body.includes('OpenTofu Initialization')
             })
 
             // 2. Prepare format of the comment
-            const output = `#### OpenTofu Format and Style 🖌\`${{ steps.fmt.outcome }}\`
-            #### OpenTofu Initialization ⚙️\`${{ steps.init.outcome }}\`
+            const output = `#### OpenTofu Initialization ⚙️\`${{ steps.init.outcome }}\`
             #### OpenTofu Validation 🤖\`${{ steps.validate.outcome }}\`
             <details><summary>Validation Output</summary>
 
