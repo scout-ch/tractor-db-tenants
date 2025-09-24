@@ -7,6 +7,7 @@ jobs:
   lint:
     name: "Lint"
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     defaults:
       run:
         working-directory: tofu
@@ -59,6 +60,10 @@ jobs:
                 body: output
               })
             }
+
+            // 4. Write to step summary
+            const fs = require('fs');
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, output);
   plan:
     name: "Create Plan"
     runs-on: ubuntu-latest
