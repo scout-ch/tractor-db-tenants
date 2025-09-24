@@ -65,6 +65,7 @@ jobs:
         working-directory: tofu
     permissions:
       contents: read
+      pull-requests: write
     env:
         PGPASSWORD: ${{ secrets.PGPASSWORD }}
         BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
