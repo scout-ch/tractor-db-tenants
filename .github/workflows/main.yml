@@ -1,11 +1,13 @@
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
 name: Plan and Apply
 
 jobs:
   plan:
-    name: "Create Plan"
+    name: "Prepare Plan"
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -29,7 +31,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/github-script@v6
+      - name: Annotate Run
+        uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
         env:
           PLAN: "tofu\n${{ steps.plan.outputs.plan }}"

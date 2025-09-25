@@ -28,7 +28,7 @@ jobs:
         id: fmt
         run: tofu fmt -check -recursive -diff
 
-      - name: Update Pull Request
+      - name: Annotate PR and Run
         uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         if: github.event_name == 'pull_request' && (success() || failure())
         with:
@@ -70,7 +70,7 @@ jobs:
             const fs = require('fs');
             fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, output);
   plan:
-    name: "Create Plan"
+    name: "Prepare Plan"
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -94,7 +94,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/github-script@v6
+      - name: Annotate PR and Run
+        uses: actions/github-script@v6
         if: github.event_name == 'pull_request' && (success() || failure())
         env:
           PLAN: "tofu\n${{ steps.plan.outputs.plan }}"
