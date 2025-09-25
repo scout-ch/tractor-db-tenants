@@ -1,5 +1,9 @@
 name: "OpenTofu Plan"
 description: "Run OpenTofu plan"
+inputs:
+  github_token:
+    description: "A github token used to download the bw cli"
+    required: true
 outputs:
   plan:
     description: Stdout of tofu plan command
@@ -9,6 +13,8 @@ runs:
   steps:
     - name: Common Setup
       uses: ./.github/actions/common-setup
+      with:
+        github_token: ${{ inputs.github_token }}
 
     - name: OpenTofu Init
       shell: bash

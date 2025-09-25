@@ -22,6 +22,7 @@ jobs:
         uses: ./.github/actions/common-setup
         with:
           download_bw: 'false'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: OpenTofu Format
         id: fmt
@@ -84,6 +85,8 @@ jobs:
       - name: Plan
         id: plan
         uses: ./.github/actions/common-setup
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
