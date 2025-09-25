@@ -35,7 +35,7 @@ jobs:
         uses: actions/github-script@v6
         if: github.event_name == 'pull_request'
         env:
-          PLAN: "tofu\n${{ steps.plan.outputs.plan }}"
+          PLAN: ${{ steps.plan.outputs.plan }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
