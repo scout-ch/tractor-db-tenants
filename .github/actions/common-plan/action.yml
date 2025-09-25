@@ -27,7 +27,6 @@ runs:
       uses: ./.github/actions/common-setup
       with:
         github_token: ${{ inputs.github_token }}
-        download_bw: true
 
     - name: OpenTofu Init
       shell: bash

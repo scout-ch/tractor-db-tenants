@@ -18,7 +18,7 @@ runs:
 
     - name: Download Bitwarden CLI ${{ env.BW_VERSION }}
       shell: bash
-      if: inputs.download_bw == "true"
+      if: ${{ inputs.download_bw == 'true' }}
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         BW_VERSION: 2025.9.0
