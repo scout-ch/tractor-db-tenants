@@ -106,17 +106,17 @@ jobs:
             })
 
             // 2. Prepare format of the comment
-            const output = `#### OpenTofu Initialization ⚙️\`${{ steps.init.outcome }}\`
-            #### OpenTofu Validation 🤖\`${{ steps.validate.outcome }}\`
+            const output = `#### OpenTofu Initialization ⚙️\`${{ steps.plan.outputs.init_outcome }}\`
+            #### OpenTofu Validation 🤖\`${{ steps.plan.outputs.validate_outcome }}\`
             <details><summary>Validation Output</summary>
 
             \`\`\`\n
-            ${{ steps.validate.outputs.stdout }}
+            ${{ steps.plan.outputs.validate }}
             \`\`\`
 
             </details>
 
-            #### OpenTofu Plan 📖\`${{ steps.plan.outcome }}\`
+            #### OpenTofu Plan 📖\`${{ steps.plan.outputs.plan_outcome }}\`
 
             <details><summary>Show Plan</summary>
 

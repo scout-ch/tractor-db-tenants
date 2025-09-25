@@ -8,6 +8,18 @@ outputs:
   plan:
     description: Stdout of tofu plan command
     value: ${{ steps.plan.outputs.stdout }}
+  plan_outcome:
+    description: Outcome of tofu plan command
+    value: ${{ steps.plan.outcome }}
+  validate:
+    description: Stdout of tofu validate command
+    value: ${{ steps.validate.outputs.stdout }}
+  validate_outcome:
+    description: Outcome of tofu validate command
+    value: ${{ steps.validate.outputs.outcome }}
+  init_outcome:
+    description: Outcome of tofu init command
+    value: ${{ steps.init.outcome }}
 runs:
   using: "composite"
   steps:
