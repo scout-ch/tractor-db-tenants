@@ -95,7 +95,7 @@ jobs:
           lock: 'false'
 
       - name: Annotate PR and Run
-        uses: actions/github-script@v6
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
         if: github.event_name == 'pull_request' && (success() || failure())
         env:
           PLAN: ${{ steps.plan.outputs.plan }}
