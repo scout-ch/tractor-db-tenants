@@ -32,8 +32,3 @@ module "u_pbs_taiga" {
   source = "./modules/postgres-user"
   name   = "pbs-taiga"
 }
-
-module "u_test" {
-  source = "./modules/postgres-user"
-  name   = "pbs-test"
-}

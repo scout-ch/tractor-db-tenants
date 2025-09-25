@@ -78,7 +78,6 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    concurrency: tf-statelock
     env:
       PGPASSWORD: ${{ secrets.PGPASSWORD }}
       BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
@@ -93,6 +92,7 @@ jobs:
         uses: ./.github/actions/common-plan
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          lock: 'false'
 
       - name: Annotate PR and Run
         uses: actions/github-script@v6
