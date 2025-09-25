@@ -38,17 +38,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            // 1. Retrieve existing bot comments for the PR
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-            })
-            const botComment = comments.find(comment => {
-              return comment.user.type === 'Bot' && comment.body.includes('OpenTofu Initialization')
-            })
-
-            // 2. Prepare format of the comment
+            // 1. Prepare format of the comment
             const output = `#### OpenTofu Initialization ⚙️\`${{ steps.plan.outputs.init_outcome }}\`
             #### OpenTofu Validation 🤖\`${{ steps.plan.outputs.validate_outcome }}\`
             <details><summary>Validation Output</summary>
@@ -71,7 +61,7 @@ jobs:
 
             *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`tofu\`, Workflow: \`${{ github.workflow }}\`*`;
 
-            // 3. Write to step summary
+            // 2. Write to step summary
             const fs = require('fs');
             fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, output);
 
