@@ -4,6 +4,10 @@ inputs:
   github_token:
     description: "A github token used to download the bw cli"
     required: true
+  lock:
+    description: "Should terraform state be locked?"
+    required: false
+    default: "true"
 outputs:
   plan:
     description: Stdout of tofu plan command
@@ -44,4 +48,4 @@ runs:
       shell: bash
       working-directory: tofu
       id: plan
-      run: tofu plan -no-color -out=tfplan
+      run: "tofu plan -no-color -out=tfplan ${{ inputs.lock != 'true' && ' -lock=false' || '' }}"
