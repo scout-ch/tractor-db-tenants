@@ -48,4 +48,4 @@ runs:
       shell: bash
       working-directory: tofu
       id: plan
-      run: "tofu plan -no-color -out=tfplan ${{ inputs.lock == 'true' ? '' : ' -lock=false' }}"
+      run: "tofu plan -no-color -out=tfplan ${{ inputs.lock != 'true' && ' -lock=false' || '' }}"
