@@ -16,7 +16,7 @@ outputs:
     value: ${{ steps.validate.outputs.stdout }}
   validate_outcome:
     description: Outcome of tofu validate command
-    value: ${{ steps.validate.outputs.outcome }}
+    value: ${{ steps.validate.outcome }}
   init_outcome:
     description: Outcome of tofu init command
     value: ${{ steps.init.outcome }}

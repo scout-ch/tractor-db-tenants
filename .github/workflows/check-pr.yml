@@ -78,13 +78,18 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    env:
+      PGPASSWORD: ${{ secrets.PGPASSWORD }}
+      BW_CLIENTID: ${{ secrets.BW_CLIENTID }}
+      BW_CLIENTSECRET: ${{ secrets.BW_CLIENTSECRET }}
+      BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
     steps:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
 
       - name: Plan
         id: plan
-        uses: ./.github/actions/common-setup
+        uses: ./.github/actions/common-plan
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
