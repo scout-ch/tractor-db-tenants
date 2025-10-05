@@ -14,3 +14,10 @@ resource "postgresql_database" "this" {
     ]
   }
 }
+
+resource "postgresql_grant" "db_connect" {
+  database    = var.name
+  role        = var.owner
+  object_type = "database"
+  privileges  = ["CONNECT"]
+}
