@@ -16,7 +16,7 @@ resource "random_password" "this" {
 resource "bitwarden_item_login" "this" {
   count = var.bitwarden_id == null ? 1 : 0
 
-  name     = "${var.name} (Postgres)"
+  name     = "${var.name} (MariaDB)"
   username = var.name
   password = random_password.this[0].result
 
