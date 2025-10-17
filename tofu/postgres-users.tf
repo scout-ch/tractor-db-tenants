@@ -32,3 +32,13 @@ module "u_pbs_taiga" {
   source = "./modules/postgres-user"
   name   = "pbs-taiga"
 }
+
+module "u_pbs_matrix" {
+  source = "./modules/postgres-user"
+  name   = "pbs-matrix"
+}
+
+module "u_pbs_matrix_authentication_service" {
+  source = "./modules/postgres-user"
+  name   = "pbs-matrix-authentication-service"
+}

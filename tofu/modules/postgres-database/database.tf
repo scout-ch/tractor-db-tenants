@@ -2,9 +2,9 @@ resource "postgresql_database" "this" {
   name                   = var.name
   owner                  = var.owner
   alter_object_ownership = true
-  encoding               = "DEFAULT"
-  lc_collate             = "DEFAULT"
-  lc_ctype               = "DEFAULT"
+  encoding               = var.encoding
+  lc_collate             = var.lc_collate
+  lc_ctype               = var.lc_ctype
 
   lifecycle {
     ignore_changes = [

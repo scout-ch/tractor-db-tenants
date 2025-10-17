@@ -39,3 +39,21 @@ module "db_pbs_taiga" {
   name  = "pbs-taiga"
   owner = module.u_pbs_taiga.name
 }
+
+module "db_pbs_matrix" {
+  source = "./modules/postgres-database"
+
+  encoding   = "UTF8"
+  lc_collate = "C"
+  lc_ctype   = "C"
+
+  name  = "pbs-matrix"
+  owner = module.u_pbs_matrix.name
+}
+
+module "db_pbs_matrix_authentication_service" {
+  source = "./modules/postgres-database"
+
+  name  = "pbs-mas"
+  owner = module.u_pbs_matrix_authentication_service.name
+}
