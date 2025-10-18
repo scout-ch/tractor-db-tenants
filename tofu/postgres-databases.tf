@@ -54,6 +54,6 @@ module "db_pbs_matrix" {
 module "db_pbs_matrix_authentication_service" {
   source = "./modules/postgres-database"
 
-  name  = "pbs-mas"
+  name  = "pbs-matrix-authentication-service"
   owner = module.u_pbs_matrix_authentication_service.name
 }
