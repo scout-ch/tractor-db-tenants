@@ -20,4 +20,8 @@ resource "postgresql_grant" "db_connect" {
   role        = var.owner
   object_type = "database"
   privileges  = ["CONNECT"]
+
+  depends_on = [
+    postgresql_database.this
+  ]
 }
