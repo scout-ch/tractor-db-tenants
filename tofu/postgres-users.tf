@@ -23,6 +23,11 @@ module "u_pbs_hering" {
   name   = "pbs-hering"
 }
 
+module "u_pbs_hering_staging" {
+  source = "./modules/postgres-user"
+  name   = "pbs-hering-staging"
+}
+
 module "u_pbs_rally" {
   source = "./modules/postgres-user"
   name   = "pbs-rallly"

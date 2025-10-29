@@ -26,6 +26,13 @@ module "db_pbs_hering" {
   owner = module.u_pbs_hering.name
 }
 
+module "db_pbs_hering_staging" {
+  source = "./modules/postgres-database"
+
+  name  = "pbs-hering-staging"
+  owner = module.u_pbs_hering_staging.name
+}
+
 module "db_pbs_rally" {
   source = "./modules/postgres-database"
 
