@@ -31,7 +31,7 @@
       "groupSlug": "opentofu",
       "automerge": false,
       "prBodyNotes": [
-        "Please remember to run `tofu ini -upgrade`.\n\nThen please check if opentofu wants to change anything.\n\n:warning: Please also check if renovate-bot also caught the opentofu version in the github acitons workflows."
+        "Please remember to run `tofu init -upgrade`.\n\nThen please check if opentofu wants to change anything.\n\n:warning: Please also check if renovate-bot also caught the opentofu version in the github actions workflows."
       ],
       "labels": [
         "manual"
