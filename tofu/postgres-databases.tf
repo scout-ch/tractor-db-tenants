@@ -64,3 +64,10 @@ module "db_pbs_matrix_authentication_service" {
   name  = "pbs-matrix-authentication-service"
   owner = module.u_pbs_matrix_authentication_service.name
 }
+
+module "db_tractor_fluxcd_experiments" {
+  source = "./modules/postgres-database"
+
+  name  = "tractor-fluxcd-experiments-tf"
+  owner = module.u_tractor_fluxcd_experiments_tf.name
+}

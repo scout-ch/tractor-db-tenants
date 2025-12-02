@@ -47,3 +47,8 @@ module "u_pbs_matrix_authentication_service" {
   source = "./modules/postgres-user"
   name   = "pbs-matrix-authentication-service"
 }
+
+module "u_tractor_fluxcd_experiments_tf" {
+  source = "./modules/postgres-user"
+  name   = "tractor-fluxcd-experiments-tf"
+}
