@@ -14,3 +14,11 @@ module "db_mova_erinnerungsbuch" {
     "mova-erinnerungsbuch" = module.u_mova_erinnerungsbuch
   }
 }
+module "db_pbs_pfadi_finder_midata_adapter" {
+  source = "./modules/mariadb-database"
+
+  name = "pbs-pfadi-finder-midata-adapter"
+  grants = {
+    "pfadi-finder-midata-adapter" = module.u_pbs_pfadi_finder_midata_adapter
+  }
+}

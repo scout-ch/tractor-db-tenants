@@ -9,3 +9,9 @@ module "u_mova_erinnerungsbuch" {
 
   name = "mova-erinnerungsbuch"
 }
+
+module "u_pbs_pfadi_finder_midata_adapter" {
+  source = "./modules/mariadb-user"
+
+  name = "pbs-pfadi-finder-midata-adapter"
+}
