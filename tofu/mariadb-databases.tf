@@ -15,7 +15,7 @@ module "db_mova_erinnerungsbuch" {
   }
 }
 module "db_pfadi_finder_midata_adapter" {
-  source = "./modules/pfadi_finder_midata_adapter"
+  source = "./modules/mariadb-database"
 
   name = "pfadi-finder-midata-adapter"
   grants = {
