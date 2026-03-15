@@ -26,8 +26,6 @@ provider "bitwarden" {
   # Configure with env vars: https://registry.terraform.io/providers/maxlaverse/bitwarden/latest/docs#environment-variables
   # see .env.example
   server = "https://vaultwarden.scout.ch"
-
-  client_implementation = "embedded"
 }
 
 provider "random" {}
