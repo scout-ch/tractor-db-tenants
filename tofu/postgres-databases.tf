@@ -65,9 +65,16 @@ module "db_pbs_matrix_authentication_service" {
   owner = module.u_pbs_matrix_authentication_service.name
 }
 
-module "db_tractor_fluxcd_experiments" {
+module "db_tractor_fluxcd_experiments_tf" {
   source = "./modules/postgres-database"
 
   name  = "tractor-fluxcd-experiments-tf"
   owner = module.u_tractor_fluxcd_experiments_tf.name
+}
+
+module "db_tractor_k8s_shared_tf" {
+  source = "./modules/postgres-database"
+
+  name  = "tractor-k8s-shared-tf"
+  owner = module.u_tractor_k8s_shared_tf.name
 }
