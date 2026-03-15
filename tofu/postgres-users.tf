@@ -53,7 +53,7 @@ module "u_tractor_fluxcd_experiments_tf" {
   name   = "tractor-fluxcd-experiments-tf"
 }
 
-module "u_tractor_k8s_shared_tf" {
+module "u_tractor_k8s_tenants_tf" {
   source = "./modules/postgres-user"
-  name   = "tractor-k8s-shared-tf"
+  name   = "tractor-k8s-tenants-tf"
 }

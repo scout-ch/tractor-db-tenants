@@ -72,9 +72,9 @@ module "db_tractor_fluxcd_experiments_tf" {
   owner = module.u_tractor_fluxcd_experiments_tf.name
 }
 
-module "db_tractor_k8s_shared_tf" {
+module "db_tractor_k8s_tenants_tf" {
   source = "./modules/postgres-database"
 
-  name  = "tractor-k8s-shared-tf"
-  owner = module.u_tractor_k8s_shared_tf.name
+  name  = "tractor-k8s-tenants-tf"
+  owner = module.u_tractor_k8s_tenants_tf.name
 }
