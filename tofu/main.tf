@@ -5,7 +5,7 @@ terraform {
   required_providers {
     mysql = {
       source  = "petoju/mysql"
-      version = "3.0.97"
+      version = "3.0.100"
     }
     postgresql = {
       source  = "cyrilgdn/postgresql"
