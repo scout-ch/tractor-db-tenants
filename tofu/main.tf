@@ -5,7 +5,7 @@ terraform {
   required_providers {
     mysql = {
       source  = "petoju/mysql"
-      version = "3.0.104"
+      version = "3.0.105"
     }
     postgresql = {
       source  = "cyrilgdn/postgresql"
@@ -13,7 +13,7 @@ terraform {
     }
     bitwarden = {
       source  = "maxlaverse/bitwarden"
-      version = "0.22.0"
+      version = "0.24.0"
     }
     random = {
       source  = "hashicorp/random"
